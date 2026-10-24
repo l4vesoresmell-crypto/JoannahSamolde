@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Joannah Samolde | Personal Portfolio</title>
+
+    <style>
+        /* ===== GENERAL SETTINGS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --dark: #211832;
+            --dark-light: #302344;
+            --purple: #A78BFA;
+            --pink: #FFD6E7;
+            --white: #FFFFFF;
+            --background: #F8F5FF;
+            --text: #382B49;
+            --muted: #766981;
+            --border: #E8DDF8;
+        }
+
+        html {
+            scroll-padding-top: 95px;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        section {
+            padding: 85px 9%;
+            scroll-margin-top: 75px;
+        }
+
+        .section-label {
+            color: #8060C7;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: clamp(36px, 5vw, 58px);
+            margin: 15px 0;
+        }
+
+        h2 {
+            color: var(--dark);
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: var(--dark);
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* ===== NAVIGATION ===== */
+        header {
+            background: var(--dark);
+            color: var(--white);
+            padding: 16px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 18px #21183220;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: var(--purple);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        nav a {
+            color: #F5EEFF;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            color: var(--pink);
+        }
+
+        /* ===== BUTTONS ===== */
+        .button {
+            display: inline-block;
+            background: var(--purple);
+            color: var(--dark);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 12px;
+            transition: transform 0.25s, background 0.25s;
+        }
+
+        .button:hover {
+            background: var(--pink);
+            transform: translateY(-2px);
+        }
+
+        .button-outline {
+            display: inline-block;
+            border: 2px solid var(--purple);
+            color: var(--white);
+            padding: 10px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 12px 0 0 8px;
+            transition: background 0.25s;
+        }
+
+        .button-outline:hover {
+            background: var(--dark-light);
+        }
+
+        /* ===== HOME ===== */
+        .home {
+            min-height: 88vh;
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    #A78BFA35,
+                    transparent 30%
+                ),
+                var(--dark);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .home-content {
+            flex: 1;
+            max-width: 650px;
+        }
+
+        .home .section-label {
+            color: var(--pink);
+        }
+
+        .home h1 {
+            color: var(--white);
+        }
+
+        .home h1 span {
+            color: var(--purple);
+        }
+
+        .home p {
+            color: #E4DCEC;
+        }
+
+        .profile-photo {
+            flex: 0 0 280px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-photo img {
+            width: 280px;
+            height: 340px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 140px 140px 24px 24px;
+            border: 5px solid var(--purple);
+            box-shadow: 0 0 35px #A78BFA25;
+        }
+
+        .photo-placeholder {
+            width: 280px;
+            height: 340px;
+            border-radius: 140px 140px 24px 24px;
+            border: 3px solid var(--purple);
+            background: var(--dark-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            color: var(--pink);
+        }
+
+        .photo-placeholder .initials {
+            font-size: 70px;
+            font-weight: bold;
+            color: var(--purple);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--white);
+        }
+
+        .about-content {
+            max-width: 850px;
+        }
+
+        .about-content p {
+            color: var(--muted);
+        }
+
+        .about-highlight {
+            background: var(--background);
+            border-left: 4px solid var(--purple);
+            padding: 20px;
+            margin-top: 25px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills {
+            background: #F0E9FF;
+        }
+
+        .section-intro {
+            max-width: 700px;
+            color: var(--muted);
+        }
+
+        .skills-grid,
+        .projects-grid,
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(220px, 1fr)
+            );
+            gap: 22px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px #21183208;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px #21183212;
+        }
+
+        .skill-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--pink);
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 17px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        /* ===== PROJECTS ===== */
+        .projects {
+            background: var(--background);
+        }
+
+        .project-number {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #8060C7;
+            font-weight: bold;
+            margin-bottom: 12px !important;
+        }
+
+        .project-tag {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 5px 11px;
+            background: #F0E9FF;
+            color: #62449D;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--dark);
+            color: var(--white);
+        }
+
+        .contact h2 {
+            color: var(--white);
+        }
+
+        .contact .section-label {
+            color: var(--pink);
+        }
+
+        .contact .section-intro {
+            color: #DED4EB;
+        }
+
+        .contact .card {
+            background: var(--dark-light);
+            border: 1px solid #514064;
+            cursor: pointer;
+            overflow-wrap: anywhere;
+        }
+
+        .contact .card h3 {
+            color: var(--pink);
+        }
+
+        .contact .card p {
+            color: #DED4EB;
+        }
+
+        .contact .card a {
+            display: inline-block;
+            color: var(--purple);
+            font-weight: bold;
+            margin-top: 12px;
+            overflow-wrap: anywhere;
+        }
+
+        .contact .card a:hover {
+            color: var(--pink);
+        }
+
+        .contact .card:focus-visible {
+            outline: 3px solid var(--pink);
+            outline-offset: 3px;
+        }
+
+        .contact-note {
+            font-size: 12px;
+            color: #C5B8D6 !important;
+            margin-top: 15px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #180F24;
+            color: #D9CFE5;
+            text-align: center;
+            padding: 24px 15px;
+            font-size: 13px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer span {
+            color: var(--pink);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 800px) {
+            header {
+                justify-content: center;
+                padding: 15px 5%;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 14px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            section {
+                padding: 65px 7%;
+            }
+
+            .home {
+                min-height: auto;
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .profile-photo {
+                flex: initial;
+            }
+
+            .profile-photo img,
+            .photo-placeholder {
+                width: 220px;
+                height: 270px;
+            }
+
+            .photo-placeholder .initials {
+                font-size: 55px;
+            }
+
+            h2 {
+                font-size: 29px;
+            }
+
+            .button-outline {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 420px) {
+            nav {
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .skills-grid,
+            .projects-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="logo">Joannah<span>.</span></div>
+
+        <nav aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+
+    <!-- HOME SECTION -->
+    <section id="home" class="home">
+
+        <div class="home-content">
+            <p class="section-label">Welcome to my portfolio</p>
+
+            <h1>
+                Hello, I'm<br>
+                <span>Joannah Samolde.</span>
+            </h1>
+
+            <p>
+                An aspiring IT professional who enjoys learning new
+                technologies, exploring creative ideas, and developing
+                digital skills.
+            </p>
+
+            <a href="#projects" class="button">
+                Explore My Projects
+            </a>
+
+            <a href="#contact" class="button-outline">
+                Contact Me
+            </a>
+        </div>
+
+        <div class="profile-photo">
+           <img src="joan.jpg" alt="Joannah Samolde">
+            </div>
+
+            <div class="photo-placeholder">
+                <div class="initials">JS</div>
+                <p>Joannah Samolde</p>
+                <p>Personal Portfolio</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="about">
+
+        <div class="about-content">
+            <p class="section-label">A little introduction</p>
+
+            <h2>About Me</h2>
+
+            <p>
+                Hello! I'm Joannah Samolde. Welcome to my personal
+                portfolio, where I share my interests, developing
+                skills, and projects.
+            </p>
+
+            <p>
+                I believe that learning is a continuous process.
+                Every new lesson and project is an opportunity to
+                discover something new, improve my abilities, and
+                become more confident in solving problems.
+            </p>
+
+            <p>
+                Through my learning journey, I aim to develop my
+                technical knowledge, creativity, and understanding
+                of technology.
+            </p>
+
+            <div class="about-highlight">
+                <strong>My goal</strong>
+                <p>
+                    To keep learning, improve my skills, and use
+                    technology to create meaningful digital solutions.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="skills">
+
+        <p class="section-label">My learning journey</p>
+
+        <h2>My Skills</h2>
+
+        <p class="section-intro">
+            Here are some areas of technology and personal development
+            to showcase. Edit these cards to match Joannah's actual skills.
+        </p>
+
+        <div class="skills-grid">
+
+            <div class="card">
+                <div class="skill-icon">H</div>
+                <h3>HTML</h3>
+                <p>
+                    Learning to structure web pages with headings,
+                    paragraphs, images, links, and other elements.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="skill-icon">C</div>
+                <h3>CSS</h3>
+                <p>
+                    Exploring colors, layouts, typography, and
+                    responsive website design.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="skill-icon">JS</div>
+                <h3>JavaScript</h3>
+                <p>
+                    Learning programming logic, functions,
+                    variables, and interactive website features.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="skill-icon">&lt;/&gt;</div>
+                <h3>Programming</h3>
+                <p>
+                    Practicing logical thinking and learning how
+                    to solve problems through code.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="skill-icon">UI</div>
+                <h3>UI Design</h3>
+                <p>
+                    Exploring how to organize content and create
+                    clear, user-friendly interfaces.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="skill-icon">+</div>
+                <h3>Problem Solving</h3>
+                <p>
+                    Developing patience, creativity, and step-by-step
+                    thinking when working on tasks.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects">
+
+        <p class="section-label">Selected work</p>
+
+        <h2>My Projects</h2>
+
+        <p class="section-intro">
+            This section presents example project cards. Replace
+            the descriptions with Joannah's real school activities
+            or completed projects.
+        </p>
+
+        <div class="projects-grid">
+
+            <div class="card">
+                <p class="project-number">PROJECT 01</p>
+                <h3>Personal Portfolio Website</h3>
+                <p>
+                    A personal website that introduces its owner,
+                    highlights skills, and provides contact information.
+                </p>
+                <span class="project-tag">HTML &amp; CSS</span>
+            </div>
+
+            <div class="card">
+                <p class="project-number">PROJECT 02</p>
+                <h3>Student Information Page</h3>
+                <p>
+                    A sample page for organizing student details
+                    in a simple and readable format.
+                </p>
+                <span class="project-tag">Web Development</span>
+            </div>
+
+            <div class="card">
+                <p class="project-number">PROJECT 03</p>
+                <h3>Calculation Program</h3>
+                <p>
+                    A sample programming activity that uses variables,
+                    calculations, and logical steps to produce results.
+                </p>
+                <span class="project-tag">Programming</span>
+            </div>
+
+            <div class="card">
+                <p class="project-number">PROJECT 04</p>
+                <h3>UI Design Concept</h3>
+                <p>
+                    A design concept that explores page structure,
+                    colors, navigation, and user-friendly layouts.
+                </p>
+                <span class="project-tag">UI Design</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+
+        <p class="section-label">Let's connect</p>
+
+        <h2>Contact Me</h2>
+
+        <p class="section-intro">
+            Have a question or want to connect? Use one of the
+            contact options below.
+        </p>
+
+        <div class="contact-grid">
+
+            <!-- EMAIL CARD -->
+            <div class="card"
+                 onclick="window.location.href='mailto:joannah@example.com'"
+                 onkeydown="if(event.key === 'Enter') window.location.href='mailto:joannah@example.com'"
+                 role="link"
+                 tabindex="0"
+                 aria-label="Send Joannah an email">
+
+                <h3>Email</h3>
+
+                <p>
+                    Send an email for questions, school matters,
+                    or collaboration.
+                </p>
+
+                <a href="mailto:samoldejoannah@gmail.com"
+                   onclick="event.stopPropagation()">
+                    samoldejoannah@gmail.com→
+                </a>
+
+                <p class="contact-note">
+                    Replace with Joannah's actual email address.
+                </p>
+            </div>
+
+
+            <!-- FACEBOOK CARD -->
+<div class="card"
+     onclick="window.open('https://www.facebook.com/joannah.samolde.5?mibextid=ZbWKwL', '_blank', 'noopener,noreferrer')"
+     onkeydown="if(event.key === 'Enter') window.open('https://www.facebook.com/joannah.samolde.5?mibextid=ZbWKwL', '_blank', 'noopener,noreferrer')"
+     role="link"
+     tabindex="0"
+     aria-label="Visit Joannah's Facebook profile">
+
+    <h3>Facebook</h3>
+
+    <p>
+        Connect with me on Facebook and stay in touch.
+    </p>
+
+    <a href="https://www.facebook.com/joannah.samolde.5?mibextid=ZbWKwL"
+       target="_blank"
+       rel="noopener noreferrer"
+       onclick="event.stopPropagation()">
+        Visit Joannah's Facebook Profile →
+    </a>
+
+</div>
